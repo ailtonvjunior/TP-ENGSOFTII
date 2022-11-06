@@ -69,6 +69,7 @@ public class ConsultaQuestaoController implements Initializable {
     return isAluno;
   }
 
+  //allows answer be visible
   public void verResposta() {
     if (((GaussianBlur) resposta.getEffect()).getRadius() != 0.0) {
       resposta.setEffect(new GaussianBlur(0.0));
@@ -77,6 +78,7 @@ public class ConsultaQuestaoController implements Initializable {
     }
   }
 
+  //turn visible previous question
   public void antQuestao() {
     questaoAtual--;
     enunciado.setText(questoes.get(questaoAtual).getEnunciado());
@@ -89,6 +91,7 @@ public class ConsultaQuestaoController implements Initializable {
     }
   }
 
+//turn visible next question
   public void proxQuestao() {
     questaoAtual++;
     enunciado.setText(questoes.get(questaoAtual).getEnunciado());
@@ -101,6 +104,7 @@ public class ConsultaQuestaoController implements Initializable {
     }
   }
 
+  //set "go back" option
   public void voltar() throws Exception {
     Stage stage = (Stage) enunciado.getScene().getWindow();
     if (Boolean.TRUE.equals(stage.getUserData())) {
@@ -119,6 +123,8 @@ public class ConsultaQuestaoController implements Initializable {
   private void changeScene(Stage stage, Application application) throws Exception {
     application.start(stage);
   }
+
+  //run application
   public void run() {
     txtProcurar.setVisible(false);
     btSim.setVisible(false);
@@ -138,16 +144,15 @@ public class ConsultaQuestaoController implements Initializable {
     gridPane.setVisible(true);
     GaussianBlur blur = new GaussianBlur();
     resposta.setEffect(blur);
-    if (!questoes.isEmpty()) {
-
-      if (questoes.size() > 1) {
+    //enable next question
+      if (questoes.size() > 1 && !questoes.isEmpty()) {
         proxQuestao.setDisable(false);
         proxQuestao.setVisible(true);
       }
       enunciado.setText(questoes.get(questaoAtual).getEnunciado());
       resposta.setText(questoes.get(questaoAtual).getResposta());
-    } else {
-      if (isAluno) {
+
+      if (isAluno && questoes.isEmpty()) {
         try {
           changeScene(new MenuAlunoApplication());
         } catch (Exception e) {
