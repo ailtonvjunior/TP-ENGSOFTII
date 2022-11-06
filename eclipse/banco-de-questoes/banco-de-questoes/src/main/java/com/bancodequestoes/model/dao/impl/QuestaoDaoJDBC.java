@@ -23,6 +23,7 @@ public class QuestaoDaoJDBC implements QuestaoDao {
     this.conn = conn;
   }
 
+  //Insert question on DataBase
   @Override
   public void insert(Questao obj) {
     PreparedStatement st = null;
@@ -39,13 +40,11 @@ public class QuestaoDaoJDBC implements QuestaoDao {
 
       int rowsAffected = st.executeUpdate();
 
-      if (rowsAffected > 0) {
-        ResultSet rs = st.getGeneratedKeys();
-        if (rs.next()) {
-          int id = rs.getInt(1);
-          obj.setIdQuestao(id);
-          insertTemaxQuestao(obj);
-        }
+      if (rowsAffected > 0 && rs.next()) {
+    	ResultSet rs = st.getGeneratedKeys();
+        int id = rs.getInt(1);
+        obj.setIdQuestao(id);
+        insertTemaxQuestao(obj);
         DB.closeResultSet(rs);
       } else {
         throw new DbException("ERRO! NENHUMA LINHA AFETADA!");
@@ -77,12 +76,10 @@ public class QuestaoDaoJDBC implements QuestaoDao {
 
       int rowsAffected = st.executeUpdate();
 
-      if (rowsAffected > 0) {
+      if (rowsAffected > 0 && rs.next()) {
         ResultSet rs = st.getGeneratedKeys();
-        if (rs.next()) {
-          int id = rs.getInt(1);
-          obj.getRelatorio().setIdRel(id);
-        }
+        int id = rs.getInt(1);
+        obj.getRelatorio().setIdRel(id);
         DB.closeResultSet(rs);
       } else {
         throw new DbException("ERRO! NENHUMA LINHA AFETADA!");
@@ -125,6 +122,7 @@ public class QuestaoDaoJDBC implements QuestaoDao {
     }
   }
 
+  //Delete question on database
   @Override
   public void deleteById(Integer id) {
     PreparedStatement st = null;
@@ -140,7 +138,6 @@ public class QuestaoDaoJDBC implements QuestaoDao {
 
   }
 
-
   private Questao instanciaQuestao(ResultSet rs) throws SQLException {
     Questao obj = new Questao();
     obj.setIdQuestao(rs.getInt("idQuestao"));
@@ -148,7 +145,6 @@ public class QuestaoDaoJDBC implements QuestaoDao {
     obj.setResposta(rs.getString("resposta"));
     obj.setPublica(rs.getBoolean("publica"));
     instanciaTemas(obj);
-//    instanciaRelatorio(obj);
     return obj;
   }
 
@@ -270,5 +266,4 @@ public class QuestaoDaoJDBC implements QuestaoDao {
       DB.closeStatement(st);
     }
   }
-
 }
