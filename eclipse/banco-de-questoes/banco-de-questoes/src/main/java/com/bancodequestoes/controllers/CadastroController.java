@@ -45,6 +45,7 @@ public class CadastroController implements Initializable {
     }
   }
 
+  //change visibility's state of fields
   private void changeVisibleFields(TextField visibleField, TextField invisibleField) {
     invisibleField.setText(visibleField.getText());
     visibleField.setVisible(false);
@@ -80,6 +81,7 @@ public class CadastroController implements Initializable {
     }
   }
 
+  //Ckeck fields
   private boolean fieldsAreOk() {
     return !(login.getText().isEmpty()
         || nome.getText().isEmpty()
@@ -99,11 +101,17 @@ public class CadastroController implements Initializable {
     application.start(stage);
   }
 
-  public void setAsVisibleNomeIndisponivel(String loginText) {
-    boolean nomeIndisponivel =
+  //Validade if it is a student
+  public bool isAluno (String loginText){
+    boolean aluno =
         isAluno
             ? alunoServices.checaNomeUsuario(loginText)
             : professorServices.checaNomeUsuario(loginText);
+    return aluno;
+  }
+
+  public void setAsVisibleNomeIndisponivel(String loginText) {
+    boolean nomeIndisponivel = isAluno(loginText);
     if (nomeIndisponivel) {
       txtNomeDisponivel.setVisible(false);
       txtNomeIndisponivel.setVisible(true);
