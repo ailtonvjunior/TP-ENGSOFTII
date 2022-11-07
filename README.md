@@ -2,6 +2,7 @@
 Project for the discipline of Software Engineering II (2022.2) that consists in a bank of questions that can be consulted by techers and students.
 
 # Membros do Grupo:
+Lucas Augusto da Silva Gonçalves;<br />
 Ailton Vinaud Junior;<br />
 Igor Roiz Teixeira.
 
