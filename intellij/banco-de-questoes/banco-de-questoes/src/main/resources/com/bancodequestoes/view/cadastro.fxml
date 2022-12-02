@@ -11,18 +11,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #2720b4;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodequestoes.controllers.CadastroController">
+<Pane fx:id="cadastroPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #2720b4;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bancodequestoes.controllers.CadastroController">
    <children>
       <ImageView fitHeight="500.0" fitWidth="500.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imgs/login.jpg" />
          </image>
       </ImageView>
-      <RadioButton layoutX="50.0" layoutY="387.0" mnemonicParsing="false" selected="true" text="Aluno" textFill="WHITE">
+      <RadioButton fx:id="radioAluno" layoutX="50.0" layoutY="387.0" mnemonicParsing="false" selected="true" text="Aluno" textFill="WHITE">
          <toggleGroup>
             <ToggleGroup fx:id="nivel" />
          </toggleGroup></RadioButton>
-      <RadioButton layoutX="158.0" layoutY="387.0" mnemonicParsing="false" text="Professor" textFill="WHITE" toggleGroup="$nivel" />
+      <RadioButton fx:id="radioProfessor" layoutX="158.0" layoutY="387.0" mnemonicParsing="false" text="Professor" textFill="WHITE" toggleGroup="$nivel" />
       <Text fill="WHITE" layoutX="50.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome completo:" />
       <TextField fx:id="nome" layoutX="50.0" layoutY="237.0" prefHeight="10.0" prefWidth="200.0" />
       <Text fill="WHITE" layoutX="50.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome de usuário:" />

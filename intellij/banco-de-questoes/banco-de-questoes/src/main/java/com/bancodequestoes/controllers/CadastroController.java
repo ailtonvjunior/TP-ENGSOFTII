@@ -16,6 +16,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -36,8 +37,9 @@ public class CadastroController implements Initializable {
 
   private final AlunoServices alunoServices = new AlunoServices();
   private final ProfessorServices professorServices = new ProfessorServices();
+    public Pane cadastroPane;
 
-  public void mostrarSenha(MouseEvent mouseEvent) {
+    public void mostrarSenha(MouseEvent mouseEvent) {
     if (senha.isVisible()) {
       changeVisibleFields(senha, txtSenha);
     } else {

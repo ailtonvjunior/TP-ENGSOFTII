@@ -19,9 +19,10 @@ public class WelcomeApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(WelcomeApplication.class.getResource("view/welcome.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 500);
         stage.setResizable(false);
-        stage.initStyle(StageStyle.UNIFIED);
         stage.setScene(scene);
         stage.show();
     }
 }
+
+class WelcomeApplicationLauncher {public static void main(String[] args) {WelcomeApplication.main();}}
 

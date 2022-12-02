@@ -2,6 +2,7 @@ module com.bancodequestoes {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires mysql.connector.java;
 
 
     opens com.bancodequestoes to javafx.fxml;

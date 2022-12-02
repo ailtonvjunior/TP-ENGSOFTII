@@ -17,14 +17,16 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class LoginController {
   public TextField login;
   public PasswordField senha;
   public ToggleGroup nivel;
+    public Pane loginPane;
 
-  private AlunoServices alunoServices = new AlunoServices();
+    private AlunoServices alunoServices = new AlunoServices();
   private ProfessorServices professorServices = new ProfessorServices();
 
   @FXML private Hyperlink linkCadastro;

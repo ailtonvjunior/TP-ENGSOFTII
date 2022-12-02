@@ -2,6 +2,8 @@ CREATE TABLE Professor(
     idUsr int(11) NOT NULL AUTO_INCREMENT,
     nomeUsr varchar(60) DEFAULT NULL,
     nome varchar(60) DEFAULT NULL,
+    senha varchar(2000) NOT NULL,
+    usrAluno tinyint(1) not null default 0,
     PRIMARY KEY (idUsr)
 );
 
@@ -10,6 +12,8 @@ CREATE TABLE Aluno(
     matricula int(11) DEFAULT NULL,
     nomeUsr varchar(60) DEFAULT NULL,
     nome varchar(60) DEFAULT NULL,
+    senha varchar(2000) NOT NULL,
+    usrAluno tinyint(1) not null default 1,
     PRIMARY KEY (idUsr)
 );
 
@@ -46,16 +50,16 @@ CREATE TABLE QuestaoXTema(
     CONSTRAINT FK_QuestaoxTema3 FOREIGN KEY (idTema) REFERENCES Tema (idTema)
 );
 
-INSERT INTO Professor (nomeUsr) VALUES
-    ('Clodoveu'),
-    ('Raquel'),
-    ('Eduardo');
+INSERT INTO Professor (nomeUsr, senha) VALUES
+    ('Clodoveu','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+    ('Raquel','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+    ('Eduardo','03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4');
 
-INSERT INTO Aluno (nomeUsr, matricula) VALUES
-    ('Igor',7777777),
-    ('Misael',555555),
-    ('Guilherme',888888),
-    ('Joao',3333333);
+INSERT INTO Aluno (nomeUsr, matricula, senha) VALUES
+    ('Igor',7777777,'03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+    ('Misael',555555,'03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+    ('Guilherme',888888,'03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+    ('Joao',3333333,'03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4');
 
 INSERT INTO Tema (nome) VALUES
     ('Engenharia de Requisitos'),
